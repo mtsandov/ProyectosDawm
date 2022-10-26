@@ -1,6 +1,147 @@
 body{
     background: url('img/fondokero.jpg');
+    background-size: 35%;
+    font-family: 'Judson', serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.contenedor{
+body h3{
+    color: black;
+}
+body h1{
+    color: black;
+    
+}
+/*.columna1{
+    background-color: #f2f2f2;
+    background-size:50%;
     color: rgb(156, 226, 43);
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    text-align: right;
+    
+}*/
+   
+    
+.columna1{
+    background-color: #f2f2f2;
+    background-size:50%;
+    color: rgb(156, 226, 43);
+    display: flex;
+    flex:50%;
+    width: 100%;
+    height: 100vh;
+
+    text-align: center;
+    
 }
+.columna2{
+    background-color: #f2f2f2;
+    background-size:50%;
+    color: rgb(156, 226, 43);
+    display: flex;
+    flex:50%;
+    width: 100%;
+    height: 100vh;
+  
+    text-align: center;
+    
+}
+
+.acercaDe{
+    background-color: white;
+    text-align: center;
+
+
+}
+.avatar{
+     /* cambia estos dos valores para definir el tamaño de tu círculo */
+     height: 250px;
+     width: 250px;
+     /* los siguientes valores son independientes del tamaño del círculo */
+     background-repeat: no-repeat;
+     background-position: 50%;
+     border-radius: 50%;
+     background-size: 100% auto;
+     text-align: center;
+    
+}
+.nombress{
+    background-color: #E491AF;
+    background: size 30px; 
+    text-align: center;
+    overflow:hidden;
+    
+    border-radius: 130px;
+    padding: 20px;
+}
+footer{
+    min-height: 25vh;
+    display:  flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+/*.contenedor > *{
+    padding: auto;
+    margin: auto;
+    border: #E491AF;
+    width: 80%;
+
+
+}
+#contenedor > div{
+    width: 50%;
+}*/
+
+#contenedor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+
+/*.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: stretch;
+    align-content: center;
+    flex-direction: row;
+  
+    column-gap: 50px;
+   
+}
+
+.educacion{
+    display: flex;
+
+}*/
+
+.botones {
+    min-width: 700px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .botones a {
+    text-decoration: none;
+    font-size: 28px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: #314652;
+    color: #f1f1f1;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+    transition: all .4s ease-in-out;
+  }

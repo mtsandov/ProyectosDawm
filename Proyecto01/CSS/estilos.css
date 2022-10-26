@@ -1,4 +1,74 @@
 
-h1 {
-    color:red;
+.body {
+    
+    background: url("fondokero.jpg");
+    background-size: 35%;
+    font-family: 'Judson', serif;
 }
+.acercaDe{
+    background-color: white;
+
+
+}
+.avatar{
+     /* cambia estos dos valores para definir el tamaño de tu círculo */
+     height: 250px;
+     width: 250px;
+     /* los siguientes valores son independientes del tamaño del círculo */
+     background-repeat: no-repeat;
+     background-position: 50%;
+     border-radius: 50%;
+     background-size: 100% auto;
+}
+.nombress{
+    background-color: #E491AF;
+    background-size:cover ;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.columna1 {
+    width: 50%;
+    height: 100vh;
+    background-color: green;
+    text-align: right;
+    color: white;
+}
+
+.columna2 {
+    width: 50%;
+    color: green;
+    height: 100vh;
+}
+
+footer{
+    min-height: 25vh;
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.botones {
+    min-width: 700px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .botones a {
+    text-decoration: none;
+    font-size: 28px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: #314652;
+    color: #f1f1f1;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+    transition: all .4s ease-in-out;
+  }
