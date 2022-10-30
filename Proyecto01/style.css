@@ -2,12 +2,20 @@ body{
     background: url('img/fondokero.jpg');
     background-size: 35%;
     font-family: 'Judson', serif;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    color: #314652;
+   
+}
+body h4{
+    color: rgb(156, 226, 43);
 }
 body h3{
     color: black;
+    background: size 30px; 
+    text-align: center;
+    overflow:hidden;
+    background-color: #E491AF;
+    border-radius: 10px;
+    padding: 20px;
 }
 body h1{
     color: black;
@@ -24,39 +32,64 @@ body h1{
     
 }*/
    
-    
+table{
+    background-color: #d9d9d9;
+    width: 75%;
+    color: #314652;
+    text-align: left;
+
+}
+.filaRosa{
+    background-color: #E491AF;
+
+}
+.articulos{
+    text-align: center;
+    color: #314652;
+    justify-content: center;
+    align-items: center;
+}
 .columna1{
     background-color: #f2f2f2;
-    background-size:50%;
-    color: rgb(156, 226, 43);
+    background-size:auto;
+    color: #314652;
     display: flex;
-    flex:50%;
-    width: 100%;
-    height: 100vh;
-
-    text-align: center;
+    flex: 1; /*Tamaño predeterminado de todas las columnas*/
+    flex-direction: column;
+  
     
 }
 .columna2{
     background-color: #f2f2f2;
-    background-size:50%;
-    color: rgb(156, 226, 43);
+    background-size:auto;
+    color: #314652;
     display: flex;
-    flex:50%;
-    width: 100%;
-    height: 100vh;
-  
-    text-align: center;
+    flex: 1; /*Tamaño predeterminado de todas las columnas*/
+    flex-direction: column;
+   
     
 }
 
 .acercaDe{
     background-color: white;
     text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex:1;
+    display: flex;
+
+
 
 
 }
 .avatar{
+    
+    text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex:1;
+    display: flex;
+
      /* cambia estos dos valores para definir el tamaño de tu círculo */
      height: 250px;
      width: 250px;
@@ -97,13 +130,14 @@ footer{
     width: 50%;
 }*/
 
-#contenedor {
+.columnas-cont {
     display: flex;
-    flex-direction: row;
+    flex-direction: clomumn;
     flex-wrap: wrap;
-   
-    justify-content: center;
+    
     align-items: center;
+    flex: 2;
+    justify-content:center;
   }
   
 
