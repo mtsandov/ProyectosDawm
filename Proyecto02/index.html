@@ -1,69 +1,169 @@
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <title>Fuente de datos</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="CSS/estilos.css">
-        
-        
-    </head>
-       
- 
-    <body>
+<html lang="en">
 
-        <div class="container">
-            <header class="row">
-                <div class="col">
-                    <h1>Personajes de Estudio Ghibili</h1>
-                    <p>Consulta a tus personajes favoritos por género</p>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Peliculas - Studio Ghibli</title>
+  <link rel="shortcut icon" href="./assets/img/totoro.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/load.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+    crossorigin="anonymous"></script>
+</head>
 
-                </div>
-            </header>
-            <section class="contenedor-principal row align-items-center">
-                <main class="col-md-8">
-                    <h3>Buscador</h3>
-                </main>
-                <aside class="col-md-4 align-items-center">
-                    
-                    <img
-                    class="rounded-circle flex-shrink-0"
-                    src="img/fotoperfil.jpg"
-                    alt=""
-                    style="width: 100px; height: 100px"
-                  />
-                  <h3>Melanie Sandoval</h3>
-                </aside>
-
-
-            </section>
-            <section class="resultados row">
-                <div class="col-12 col-md-4">
-
-                    <select name="select" class="tipo" id="tipo">
-                        <option value="-1" selected="">Seleccione el genero de un videojuego</option>
-                        <option value="Female">Femenino</option>
-                        <option value="Male">Masculino</option>
-                      </select>
-                   
-                </div>
-                <div class="contenedor" id="contenedor"></div>
-                <div id="respuesta" class="row row-cols-1 row-cols-md-3 g-4">
-		
-                </div>
-                <div id="respuesta2" class="row row-cols-1 row-cols-md-3 g-4">
-                    <canvas id="grafica"></canvas>
-            </section>
-           
-
+<body class="sb-nav-fixed">
+  <div id="container-loader">
+    <div class="sk-cube-grid">
+      <div class="sk-cube sk-cube1"></div>
+      <div class="sk-cube sk-cube2"></div>
+      <div class="sk-cube sk-cube3"></div>
+      <div class="sk-cube sk-cube4"></div>
+      <div class="sk-cube sk-cube5"></div>
+      <div class="sk-cube sk-cube6"></div>
+      <div class="sk-cube sk-cube7"></div>
+      <div class="sk-cube sk-cube8"></div>
+      <div class="sk-cube sk-cube9"></div>
+    </div>
+  </div>
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="index.html">Peliculas Studio Ghibli</a>
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+        class="fas fa-bars"></i></button>
+  </nav>
+  <div id="layoutSidenav" class='d-none'>
+    <div id="layoutSidenav_nav">
+      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+          <div class="nav">
+            <div class="sb-sidenav-menu-heading">Core</div>
+            <a class="nav-link" href="index.html">
+              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+              Dashboard
+            </a>
+          </div>
         </div>
+      </nav>
+    </div>
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="container-fluid px-4">
+          <h1 class="mt-4">Dashboard</h1>
+          <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+          <div class="row">
+            <div class="col-lg-6 mb-4">
+              <div class="card h-100">
+                <div class="card-header">
+                  <i class="fas fa-address-book me-1"></i>
+                      Botones mostrar personajes
+                </div>
+                <div class="card-body">
+                  <div class="d-grid gap-2 align-content-center justify-content-center w-100 h-100">
+                    <button class="btn btn-success" type="button" id="btn-todos">Mostrar todos los personajes</button>
+                    <button class="btn btn-primary" type="button" id="btn-masc">Mostrar personajes masculinos</button>
+                    <button class="btn btn-danger" type="button" id="btn-fem">Mostrar personajes femeninos</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+              <div class="card h-100">
+                <div class="card-header">
+                  <i class="fas fa-chart-pie me-1"></i>
+                  Personajes Masculinos vs Femeninos
+                </div>
+                <div class="card-body">
+                  <canvas id="myPieChart" width="100%"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4 d-none" id="card-personajes">
+            <div class="card-header">
+              <i class="fas fa-users me-1"></i>
+              Listado de personajes <span id="titulo-genero"></span>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="data-personajes" class="table table-hover ">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">#</th>
+                      <th scope="col" class="text-center">Nombre</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header">
+              <i class="fas fa-film me-1"></i>
+              Peliculas
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="data-peliculas" class="table table-hover ">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">#</th>
+                      <th scope="col" class="text-center">Título</th>
+                      <th scope="col" class="text-center">Director</th>
+                      <th scope="col" class="text-center">Productor</th>
+                      <th scope="col" class="text-center">Año</th>
+                      <th scope="col" class="text-center">Duración</th>
+                      <th scope="col" class="text-center">Puntuación</th>
+                      <th scope="col" class="text-center"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4 d-none" id="card-descripcion-pelicula">
+            <div class="card-header">
+              <i class="fas fa-video me-1"></i>
+              Descripción película
+            </div>
+            <div class="row g-0" id="descripcion-pelicula">
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Melanie Sandoval</div>
+            <div>
+              <a href="#">Privacy Policy</a>
+              &middot;
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/DataPeliculas.js"></script>
+  <script src="js/DataPersonajes.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+  <script src="assets/demo/chart-pie-demo.js"></script>
+</body>
 
-        
-     
-          <script src="js/main.js"></script>
-          <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
-         
-          
-
-          
-    </body>
 </html>
